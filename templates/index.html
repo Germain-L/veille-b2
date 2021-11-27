@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blockchain</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 10vw;
+      }
+
+      .search {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      label {
+        margin-right: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/">
+      <h1>Blockchain links</h1>
+    </a>
+    <form action="/" method="get" class="search">
+      <input type="text" id="sarch" name="search" placeholder="Search" /><br />
+    </form>
+
+    <br />
+    <h2>{{length}} articles found</h2>
+
+    <br />
+
+    {% for message in json %}
+    <a href="{{message['url']}}">
+      <h1>{{message["title"]}}</h1>
+      <br />
+    </a>
+    {% endfor %}
+  </body>
+</html>
