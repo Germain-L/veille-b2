@@ -1,8 +1,12 @@
 import json
 import io
+import sys
 
+file_name = sys.argv[1]
+
+print(file_name)
 # Opening JSON file
-f = io.open("data.json", mode="r", encoding="utf-8")
+f = io.open(file_name, mode="r", encoding="utf-8")
 
 # returns JSON object as
 # a dictionary
@@ -29,5 +33,5 @@ for message in data["messages"]:
 # Closing file
 f.close()
 
-out = io.open('output.json', mode="w", encoding="utf-8")
+out = io.open('data\output.json', mode="w", encoding="utf-8")
 out.write(json.dumps(messages, indent=4))
