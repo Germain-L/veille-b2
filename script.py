@@ -22,6 +22,8 @@ def rss():
 
         f.close()
 
+    messages.reverse()
+
     out = io.open('data\output_rss.json', mode="w", encoding="utf-8")
     out.write(json.dumps(messages, indent=4))
 
@@ -40,6 +42,8 @@ def reddit():
                 messages.append(new_article)
 
         f.close()
+
+    messages.reverse()
 
     out = io.open('data\output_reddit.json', mode="w", encoding="utf-8")
     out.write(json.dumps(messages, indent=4))
