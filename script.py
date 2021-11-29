@@ -1,9 +1,16 @@
 import json
 import io
 import sys
+import re
 
 file_name = sys.argv[1]
 feed_type = sys.argv[2]
+
+
+def clean_url(url):
+    urlsub = url.find('url=')
+    ct = url.find("&ct")
+    return url[urlsub+4:ct]
 
 
 def rss():
@@ -13,9 +20,10 @@ def rss():
 
         for message in data["messages"]:
             for embed in message["embeds"]:
+                clean_url(embed["url"])
                 new_article = {
                     'title': embed["title"],
-                    'url': embed["url"],
+                    'url': clean_url(embed["url"]),
                     'description': embed["description"]
                 }
                 messages.append(new_article)
