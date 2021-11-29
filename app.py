@@ -31,6 +31,7 @@ def index():
     search = request.args.get('search')
 
     route = request.path
+    print(route)
 
     if route == "/reddit":
         data = open_reddit()
@@ -41,7 +42,7 @@ def index():
 
     # if no arguments, render with all data
     if not search:
-        return render_template('index.html', json=data, length=len(data))
+        return render_template('index.html', json=data, length=len(data), route=request.path)
 
     # create empty list of articles
     found_articles = []
@@ -61,7 +62,7 @@ def index():
                 found_articles.append(article)
 
     # render with `found_articles``
-    return render_template('index.html', json=found_articles, length=len(found_articles))
+    return render_template('index.html', json=found_articles, length=len(found_articles), route=request.path)
 
 
 # run the app

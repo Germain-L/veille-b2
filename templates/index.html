@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8" />
     <title>Blockchain</title>
     <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
     />
     <style>
-        body {
-            margin: 10vw;
-        }
+      body {
+        margin: 10vw;
+      }
 
-        .search {
-            display: flex;
-            flex-direction: row;
-            justify-content: start;
-            align-items: center;
-        }
+      .search {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+      }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
 
-        label {
-            margin-right: 50px;
-        }
+      label {
+        margin-right: 50px;
+      }
 
-        nav a {
-            margin: 10px;
-        }
+      nav a {
+        margin: 10px;
+      }
     </style>
-</head>
-<body>
-<div>
-    <a href="/">
+  </head>
+  <body>
+    <div>
+      <a href="/">
         <h1>Blockchain links</h1>
-    </a>
-    <nav style="display: flex; flex-direction: row">
+      </a>
+      <nav style="display: flex; flex-direction: row">
         <a href="/reddit">Reddit</a>
 
         <a href="/rss">RSS</a>
-    </nav>
-    <form action="/" method="get" class="search">
-        <input type="text" id="sarch" name="search" placeholder="Search"/><br/>
-    </form>
+      </nav>
+      <form action="{{route}}" method="get" class="search">
+        <input
+          type="text"
+          id="sarch"
+          name="search"
+          placeholder="Search"
+        /><br />
+      </form>
+    </div>
 
-</div>
+    <br />
+    <h2>{{ length }} articles found</h2>
 
+    <br />
 
-<br/>
-<h2>{{ length }} articles found</h2>
-
-<br/>
-
-{% for message in json %}
+    {% for message in json %}
     <a href="{{ message['url'] }}">
-        <h1>{{ message["title"] }}</h1>
-        <br/>
+      <h1>{{ message["title"] }}</h1>
+      <br />
     </a>
-{% endfor %}
-</body>
+    {% endfor %}
+  </body>
 </html>
