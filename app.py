@@ -46,17 +46,19 @@ def index():
     # create empty list of articles
     found_articles = []
 
+    search = search.split(" ")
+
     # iterate over each article in data
     for article in data:
+        for arg in search:
+            # search in title, url and description
+            find_in_title = re.search(arg, article["title"])
+            find_in_url = re.search(arg, article["url"])
+            find_in_description = re.search(arg, article["description"])
 
-        # search in title, url and description
-        find_in_title = re.search(search, article["title"])
-        find_in_url = re.search(search, article["url"])
-        find_in_description = re.search(search, article["description"])
-
-        # if at least one match, add the article to `found_articles`
-        if find_in_title or find_in_description or find_in_url:
-            found_articles.append(article)
+            # if at least one match, add the article to `found_articles`
+            if find_in_title or find_in_description or find_in_url:
+                found_articles.append(article)
 
     # render with `found_articles``
     return render_template('index.html', json=found_articles, length=len(found_articles))
@@ -64,5 +66,4 @@ def index():
 
 # run the app
 if __name__ == '__main__':
-    app.run(host='localhost', debug=False)
-
+    app.run(host='localhost', debug=True)
